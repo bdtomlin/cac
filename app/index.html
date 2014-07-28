@@ -6,6 +6,7 @@
   <!-- build:css ./css/cac-combined.css -->
   <link rel="stylesheet" href="./app.css">
   <link rel="stylesheet" href="./nav/nav.css">
+  <link rel="stylesheet" href="./alerts/alerts.css">
   <link rel="stylesheet" href="./home/home.css">
   <link rel="stylesheet" href="./countries/countries.css">
   <!-- endbuild  -->
@@ -14,6 +15,7 @@
   <header>
     <h1>Countries &amp; Capitals</h1>
   </header>
+  <ng-include src="'./alerts/alert.html'"></ng-include>
   <div ng-view></div>
   <ng-include src="'./nav/nav.html'"></ng-include>
   
@@ -23,6 +25,7 @@
   <script src="./bower_components/angular-animate/angular-animate.js"></script>
   <script src="./app.js"></script>
   <script src="./nav/nav-controller.js"></script>
+  <script src="./alerts/alerts-controller.js"></script>
   <script src="./home/home-controller.js"></script>
   <script src="./countries/countries.js"></script>
   <script src="./countries/countries-controller.js"></script>

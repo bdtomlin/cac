@@ -2,24 +2,23 @@
 
 angular.module('cacApp').factory('Countries', ['$http', '$q', 'appSettings', function($http, $q, appSettings){
   var self = {
-    all: function(callback){
+    all: function(){
       if(self.cache){
-       callback(self.cache);
+        var deferred =  $q.defer();
+        deferred.resolve(self.cache);
+        return deferred.promise;
       }else{
         var url = appSettings.geoApi + 'countryInfoJSON';
         var params = {
-          username: 'bryantomlin'
+          username: appSettings.geoUsername,
         };
-        var http =  $http({
+        return $http({
           method: 'GET',
           url: url,
           params: params
-        })
-        .success(function(response){
-          self.cache = response.geonames;
-          callback(self.cache);
-        })
-        .error(function(){
+        }).then(function(response){
+          self.cache = response.data.geonames;
+          return self.cache;
         });
       }
     },
@@ -33,28 +32,24 @@ angular.module('cacApp').factory('Countries', ['$http', '$q', 'appSettings', fun
     },
 
     getCountry: function(countryCode){
-      var url = appSettings.geoApi + 'countryInfoJSON';
-      var params = {
-        username: 'bryantomlin',
-        country: countryCode
-      };
       return $http({
         method: 'GET',
-        url: url,
-        params: params
+        url: appSettings.geoApi + 'countryInfoJSON',
+        params: {
+          username: appSettings.geoUsername,
+          country: countryCode
+        }
       });
     },
 
     addNeighbors: function(country){
-      var url = appSettings.geoApi + 'neighboursJSON';
-      var params = {
-        username: 'bryantomlin',
-        geonameId: country.geonameId
-      };
       var http =  $http({
         method: 'GET',
-        url: url,
-        params: params
+        url: appSettings.geoApi + 'neighboursJSON',
+        params: {
+          username: appSettings.geoUsername,
+          geonameId: country.geonameId
+        }
       }).success(function(result){
         country.neighbors = result.geonames;
       });

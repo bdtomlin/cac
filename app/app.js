@@ -2,7 +2,8 @@
 
 angular.module('cacApp', ['ngRoute', 'ngAnimate'])
   .constant('appSettings', {
-    geoApi: 'http://api.geonames.org/'
+    geoApi: 'http://api.geonames.org/',
+    geoUsername: 'bryantomlin'
   })
   .config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
     $httpProvider.defaults.useXDomain = true;

@@ -2,9 +2,11 @@
 
 angular.module('cacApp')
 
-.controller('CountriesIndexCtrl', ['$scope', '$location', 'Countries', function($scope, $location, Countries){
-  Countries.all(function(countries){
+.controller('CountriesIndexCtrl', ['$rootScope', '$scope', '$location', 'Countries', function($rootScope, $scope, $location, Countries){
+  Countries.all().then(function(countries){
     $scope.countries = countries;
+  }, function(){
+    $rootScope.$broadcast('alert', {type: 'error', message: 'There was an error loading the countries.'});
   });
 
   $scope.goToCountry = function(country){
@@ -12,10 +14,10 @@ angular.module('cacApp')
   };
 }])
 
-.controller('CountriesShowCtrl', ['$scope', '$routeParams', 'Countries', function($scope, $routeParams, Countries){
+.controller('CountriesShowCtrl', ['$rootScope', '$scope', '$routeParams', 'Countries', function($rootScope, $scope, $routeParams, Countries){
   Countries.find($routeParams.country).then(function(country){
     $scope.country = country;
   }, function(data){
-    console.log(data);
+    $rootScope.$broadcast('alert', {type: 'error', message: 'There was an error loading the country.'});
   });
 }]);
