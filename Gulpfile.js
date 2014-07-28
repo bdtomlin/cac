@@ -13,8 +13,13 @@ gulp.task('default', function(){
 });
 
 gulp.task('copy-html-files', function(){
-  gulp.src('./app/**/*.html', '!./app/index.html', {base: '.app'})
+  gulp.src('./app/**/*.html', '!./app/index.html')
   .pipe(gulp.dest('build/'));
+});
+
+gulp.task('copy-images', function(){
+  gulp.src('./app/images/*')
+  .pipe(gulp.dest('build/images/'));
 });
 
 gulp.task('usemin', function(){
@@ -27,4 +32,4 @@ gulp.task('usemin', function(){
 });
 
 
-gulp.task('build', ['copy-html-files', 'usemin']);
+gulp.task('build', ['copy-html-files', 'copy-images', 'usemin']);
