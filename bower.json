@@ -1,0 +1,25 @@
+{
+  "name": "structure",
+  "version": "0.0.0",
+  "authors": [
+    "bdtomlin <bdtomlin@gmail.com>"
+  ],
+  "main": "app/index.html",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.21",
+    "angular-route": "~1.2.21",
+    "angular-animate": "~1.2.21"
+  }
+}

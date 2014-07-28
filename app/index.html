@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cacApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Countries and Capitals</title>
+  <!-- build:css ./css/cac-combined.css -->
+  <link rel="stylesheet" href="./app.css">
+  <link rel="stylesheet" href="./nav/nav.css">
+  <link rel="stylesheet" href="./home/home.css">
+  <link rel="stylesheet" href="./countries/countries.css">
+  <!-- endbuild  -->
+</head>
+<body>
+  <header>
+    <h1>Countries &amp; Capitals</h1>
+  </header>
+  <div ng-view></div>
+  <ng-include src="'./nav/nav.html'"></ng-include>
+  
+  <!-- build:js ./js/cac-combined.js -->
+  <script src="./bower_components/angular/angular.js"></script>
+  <script src="./bower_components/angular-route/angular-route.js"></script>
+  <script src="./bower_components/angular-animate/angular-animate.js"></script>
+  <script src="./app.js"></script>
+  <script src="./nav/nav-controller.js"></script>
+  <script src="./home/home-controller.js"></script>
+  <script src="./countries/countries.js"></script>
+  <script src="./countries/countries-controller.js"></script>
+  <!-- endbuild  -->
+</body>
+</html>

@@ -1,0 +1,91 @@
+.countries {
+  width: 900px;
+  margin: 2em auto;
+  border: 2px solid #bbb;
+  border-radius: 2px;
+}
+
+.countries-container {
+  height: 600px;
+  overflow: scroll;
+}
+
+.countries table {
+  width: 100%;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+.countries table th {
+  padding: 3px 5px;
+  border-bottom: 1px solid #bbb;
+  border-left: 1px solid #bbb;
+}
+.countries table tr {
+  cursor: pointer;
+}
+
+.countries table td {
+  padding: 3px 5px;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+.countries table th {
+  background: #ccc;
+  text-align: left;
+  font-size: 12px;
+}
+
+.countries table tr:nth-child(even) td {
+  background: white;
+}
+.countries table tr:nth-child(odd) td {
+  background: #eee;
+}
+.countries tr :nth-child(1){
+  width: 30%;
+}
+.countries tr :nth-child(2){
+  width: 15%;
+}
+.countries tr :nth-child(3){
+  width: 15%;
+}
+.countries tr :nth-child(4){
+  width: 15%;
+}
+.countries tr :nth-child(5){
+  width: 15%;
+}
+.countries tr :nth-child(6){
+  width: 10%;
+}
+
+main.country {
+  width: 600px;
+  margin: 2em auto;
+}
+
+main.country dl {
+  margin: none;
+  padding: none;
+}
+main.country dt {
+  float: left;
+  width: 48%;
+  margin: 0;
+  padding: 10px 0;
+  text-align: right;
+}
+main.country dd {
+  float: right;
+  width: 48%;
+  margin: 0;
+  padding: 10px 0;
+}
+main.country h2 {
+  text-align: center;
+}
