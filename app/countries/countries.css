@@ -89,3 +89,19 @@ main.country dd {
 main.country h2 {
   text-align: center;
 }
+
+#country-images {
+  margin: 2em 0;
+}
+#country-shape {
+  text-align: right;
+  float: left;
+  width: 48%;
+}
+#country-flag {
+  float: right;
+  width: 48%;
+}
+#country-shape img, #country-flag img {
+  max-width: 100%;
+}

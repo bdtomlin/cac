@@ -25,6 +25,14 @@ angular.module('cacApp').factory('Countries', ['$http', '$q', 'appSettings', fun
     },
 
     find: function(countryCode){
+      return self.getCountry(countryCode).then(function(response){
+        return response.data.geonames[0];
+      }).then(function(country){
+        return self.addNeighbors(country);
+      });
+    },
+
+    getCountry: function(countryCode){
       var url = appSettings.geoApi + 'countryInfoJSON';
       var params = {
         username: 'bryantomlin',
@@ -34,25 +42,24 @@ angular.module('cacApp').factory('Countries', ['$http', '$q', 'appSettings', fun
         method: 'GET',
         url: url,
         params: params
-      }).then(function(response){
-        return response.data.geonames[0];
-      }).then(function(country){
-        var url = appSettings.geoApi + 'neighboursJSON';
-        var params = {
-          username: 'bryantomlin',
-          geonameId: country.geonameId
-        };
-        var http =  $http({
-          method: 'GET',
-          url: url,
-          params: params
-        }).success(function(result){
-          country.neighbors = result.geonames;
-        });
-        return country;
       });
-    }
+    },
 
+    addNeighbors: function(country){
+      var url = appSettings.geoApi + 'neighboursJSON';
+      var params = {
+        username: 'bryantomlin',
+        geonameId: country.geonameId
+      };
+      var http =  $http({
+        method: 'GET',
+        url: url,
+        params: params
+      }).success(function(result){
+        country.neighbors = result.geonames;
+      });
+      return country;
+    }
   };
 
   return self;
