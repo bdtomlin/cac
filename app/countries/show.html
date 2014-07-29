@@ -9,10 +9,15 @@
     <dt>Capital</dt>
     <dd>{{country.capital}}</dd>
     <dt>Population of Capital</dt>
-    <dd>{{country.population | number}}</dd>
+    <dd>{{country.capitalPopulation | number}}</dd>
     <dt>{{country.neighbors.length}} Neighbors</dt>
     <dd>
-      <span ng-repeat="neighbor in country.neighbors">{{neighbor.countryName}}<span ng-hide="$last">, </span></span>
+      <span ng-repeat="neighbor in country.neighbors">
+        <a href="#/country/{{neighbor.countryCode}}">
+          {{neighbor.countryName}}
+        </a>
+        <span ng-hide="$last">, </span>
+      </span>
     </dd>
   </dl>
   <div ng-if="country" id="country-images">

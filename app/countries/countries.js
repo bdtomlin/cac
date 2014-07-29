@@ -28,6 +28,8 @@ angular.module('cacApp').factory('Countries', ['$http', '$q', 'appSettings', fun
         return response.data.geonames[0];
       }).then(function(country){
         return self.addNeighbors(country);
+      }).then(function(country){
+        return self.addCapitalPopulation(country);
       });
     },
 
@@ -40,6 +42,22 @@ angular.module('cacApp').factory('Countries', ['$http', '$q', 'appSettings', fun
           country: countryCode
         }
       });
+    },
+
+    addCapitalPopulation: function(country){
+      var http =  $http({
+        method: 'GET',
+        url: appSettings.geoApi + 'searchJSON',
+        params: {
+          username: appSettings.geoUsername,
+          country: country.countryCode,
+          featureCode: 'PPLC',
+          name: country.capital
+        }
+      }).success(function(result){
+        country.capitalPopulation = result.geonames[0].population;
+      });
+      return country;
     },
 
     addNeighbors: function(country){
