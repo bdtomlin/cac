@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('cacApp').factory('Countries', ['$q', 'geonames', function($q, geonames){
+angular.module('cacApp').factory('CountrySvc', ['$q', 'GeonamesSvc', function($q, GeonamesSvc){
   var self = {
     all: function(){
       if(self.cache){
@@ -8,7 +8,7 @@ angular.module('cacApp').factory('Countries', ['$q', 'geonames', function($q, ge
         deferred.resolve(self.cache);
         return deferred.promise;
       }else{
-        return geonames.allCountries().then(function(response){
+        return GeonamesSvc.allCountries().then(function(response){
           self.cache = response.data.geonames;
           return self.cache;
         });
@@ -16,12 +16,12 @@ angular.module('cacApp').factory('Countries', ['$q', 'geonames', function($q, ge
     },
 
     find: function(countryCode){
-      return geonames.getCountry(countryCode).then(function(response){
+      return GeonamesSvc.getCountry(countryCode).then(function(response){
         return response.data.geonames[0];
       }).then(function(country){
-        return geonames.addNeighbors(country);
+        return GeonamesSvc.addNeighbors(country);
       }).then(function(country){
-        return geonames.addCapitalPopulation(country);
+        return GeonamesSvc.addCapitalPopulation(country);
       });
     }
   };

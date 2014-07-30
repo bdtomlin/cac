@@ -6,8 +6,8 @@ angular.module('cacApp')
       templateUrl: 'country/country.html',
       controller: 'CountryCtrl',
       resolve: {
-        country: ['Countries', '$route', function(Countries, $route){
-          return Countries.find($route.current.params.country);
+        country: ['CountrySvc', '$route', function(CountrySvc, $route){
+          return CountrySvc.find($route.current.params.country);
         }]
       }
     });

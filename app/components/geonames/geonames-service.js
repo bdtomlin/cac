@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('cacApp').factory('geonames', ['$http', 'appSettings', function($http, appSettings){
+angular.module('cacApp').factory('GeonamesSvc', ['$http', 'appSettings', function($http, appSettings){
   var self = {
     getCountry: function(countryCode){
       return $http({

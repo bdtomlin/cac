@@ -6,8 +6,8 @@ angular.module('cacApp')
       templateUrl: 'country-list/country-list.html',
       controller: 'CountryListCtrl',
       resolve: {
-        countryList: ['Countries', function(Countries){
-          return Countries.all();
+        countryList: ['CountrySvc', function(CountrySvc){
+          return CountrySvc.all();
         }]
       }
     });
