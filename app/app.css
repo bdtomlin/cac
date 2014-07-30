@@ -24,3 +24,13 @@ header h1 {
 .clearfix {
     *zoom: 1;
 }
+
+#is-loading {
+  display: none;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+}
+#is-loading.showload {
+  display: block;
+}

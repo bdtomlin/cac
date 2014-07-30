@@ -76,6 +76,7 @@ main.country dl {
 main.country dt {
   float: left;
   width: 48%;
+  height: 1em;
   margin: 0;
   padding: 10px 0;
   text-align: right;
@@ -83,6 +84,7 @@ main.country dt {
 main.country dd {
   float: right;
   width: 48%;
+  height: 1em;
   margin: 0;
   padding: 10px 0;
 }

@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="./nav/nav.css">
   <link rel="stylesheet" href="./alerts/alerts.css">
   <link rel="stylesheet" href="./home/home.css">
-  <link rel="stylesheet" href="./countries/countries.css">
+  <link rel="stylesheet" href="./country/country.css">
+  <link rel="stylesheet" href="./country-list/country-list.css">
   <!-- endbuild  -->
 </head>
 <body>
@@ -16,8 +17,10 @@
     <h1>Countries &amp; Capitals</h1>
   </header>
   <ng-include src="'./alerts/alert.html'"></ng-include>
+  <div id="is-loading" ng-class="{showload: isLoading}"><img src="./images/loading.gif" alt="loading"></div>
   <div ng-view></div>
-  <ng-include src="'./nav/nav.html'"></ng-include>
+  <div ng-hide="isLoading" ng-include="'./nav/nav.html'"></div>
+  <!-- <ng-include src="'./nav/nav.html'"></ng-include> -->
   
   <!-- build:js ./js/cac-combined.js -->
   <script src="./bower_components/angular/angular.js"></script>
@@ -26,9 +29,14 @@
   <script src="./app.js"></script>
   <script src="./nav/nav-controller.js"></script>
   <script src="./alerts/alerts-controller.js"></script>
+  <script src="./home/home.js"></script>
   <script src="./home/home-controller.js"></script>
-  <script src="./countries/countries.js"></script>
-  <script src="./countries/countries-controller.js"></script>
+  <script src="./country/country.js"></script>
+  <script src="./country/country-controller.js"></script>
+  <script src="./country-list/country-list.js"></script>
+  <script src="./country-list/country-list-controller.js"></script>
+  <script src="./components/geonames/geonames-service.js"></script>
+  <script src="./components/country/country-service.js"></script>
   <!-- endbuild  -->
 </body>
 </html>
