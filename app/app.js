@@ -15,7 +15,7 @@ angular.module('cacApp', ['ngRoute', 'ngAnimate'])
     });
     $rootScope.$on('$routeChangeError', function(){
       $rootScope.isLoading = false;
-      $location.$broadcast('alert', {type: 'error', message: 'There was an error loading the page'});
+      $rootScope.$broadcast('alert', {type: 'error', message: 'There was an error loading the page'});
     });
   })
 

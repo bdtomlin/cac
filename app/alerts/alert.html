@@ -1,4 +1,4 @@
-<div ng-controller="AlertsCtrl" ng-show="alerts.length">
+<div ng-controller="AlertsCtrl">
   <div ng-repeat="alert in alerts" class="alert" ng-class="alert.type">
     {{alert.message}}
     <span class="alert-close" ng-click="dismissAlert($index)">x</span>

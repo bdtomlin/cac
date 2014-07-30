@@ -1,11 +1,13 @@
 'use strict';
 
-angular.module('cacApp').controller('AlertsCtrl', ['$scope', function($scope){
+angular.module('cacApp').controller('AlertsCtrl', ['$scope', '$timeout', function($scope, $timeout){
   $scope.alerts = [];
 
   $scope.$on('alert', function(event, alert){
-    $scope.alerts.push(alert);
-    console.log($scope.alerts);
+    var index = $scope.alerts.push(alert) - 1;
+    $timeout(function(){
+      $scope.dismissAlert(index);
+    }, 5000);
   });
 
   $scope.dismissAlert = function(index){

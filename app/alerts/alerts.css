@@ -27,3 +27,12 @@
 .alert.error .alert-close {
   border-color: red;
 }
+
+.alert.ng-leave {
+  -webkit-transition: 0.3s linear all;
+  transition: 0.3s linear all;
+  opacity: 1;
+}
+.alert.ng-leave.ng-leave-active {
+  opacity: 0;
+}

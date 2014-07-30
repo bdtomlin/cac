@@ -18,9 +18,8 @@
   </header>
   <ng-include src="'./alerts/alert.html'"></ng-include>
   <div id="is-loading" ng-class="{showload: isLoading}"><img src="./images/loading.gif" alt="loading"></div>
-  <div ng-view></div>
-  <div ng-hide="isLoading" ng-include="'./nav/nav.html'"></div>
-  <!-- <ng-include src="'./nav/nav.html'"></ng-include> -->
+  <div id="main-view" ng-view>
+  </div>
   
   <!-- build:js ./js/cac-combined.js -->
   <script src="./bower_components/angular/angular.js"></script>

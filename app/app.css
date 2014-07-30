@@ -34,3 +34,31 @@ header h1 {
 #is-loading.showload {
   display: block;
 }
+
+#main-view {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding-top: 80px;
+  width: 100%;
+}
+
+#main-view.ng-leave {
+  -webkit-transition: 0.2s linear all;
+  transition: 0.2s linear all;
+  opacity: 1;
+}
+
+#main-view.ng-leave-active {
+  opacity: 0;
+}
+
+#main-view.ng-enter {
+  -webkit-transition: 0.2s 0.4s linear all;
+  transition: 0.2s 0.4s linear all;
+  opacity: 0;
+}
+
+#main-view.ng-enter-active {
+  opacity: 1;
+}
