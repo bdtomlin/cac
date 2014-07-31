@@ -1,57 +1,71 @@
-'use strict';
+(function() {
+  "use strict";
 
-angular.module('cacApp').factory('GeonamesSvc', ['$http', 'appSettings', function($http, appSettings){
-  var self = {
-    getCountry: function(countryCode){
-      return $http({
-        method: 'GET',
-        url: appSettings.geoApi + 'countryInfoJSON',
-        params: {
-          username: appSettings.geoUsername,
-          country: countryCode
-        }
-      });
-    },
+  angular.module('cacApp').factory('GeonamesSvc', ['$http', 'appSettings', function($http, appSettings){
+    var self = {
+      getCountry: function(countryCode){
+        var http = $http({
+          method: 'GET',
+          url: appSettings.geoApi + 'countryInfoJSON',
+          params: {
+            username: appSettings.geoUsername,
+            country: countryCode
+          }
+        });
 
-    addCapitalPopulation: function(country){
-      var http =  $http({
-        method: 'GET',
-        url: appSettings.geoApi + 'searchJSON',
-        params: {
-          username: appSettings.geoUsername,
-          country: country.countryCode,
-          featureCode: 'PPLC',
-          name: country.capital
-        }
-      }).success(function(result){
-        country.capitalPopulation = result.geonames[0].population;
-      });
-      return country;
-    },
+        return http.then(function(response){
+          return response.data.geonames[0];
+        }).then(function(country){
+          return self.addNeighbors(country);
+        }).then(function(country){
+          return self.addCapitalPopulation(country);
+        });
+      },
 
-    addNeighbors: function(country){
-      var http =  $http({
-        method: 'GET',
-        url: appSettings.geoApi + 'neighboursJSON',
-        params: {
-          username: appSettings.geoUsername,
-          geonameId: country.geonameId
-        }
-      }).success(function(result){
-        country.neighbors = result.geonames;
-      });
-      return country;
-    },
+      addCapitalPopulation: function(country){
+        var http =  $http({
+          method: 'GET',
+          url: appSettings.geoApi + 'searchJSON',
+          params: {
+            username: appSettings.geoUsername,
+            country: country.countryCode,
+            featureCode: 'PPLC',
+            name: country.capital
+          }
+        }).success(function(result){
+          country.capitalPopulation = result.geonames[0].population;
+        });
+        return country;
+      },
 
-    allCountries: function(){
-      return $http({
-        method: 'GET',
-        url: appSettings.geoApi + 'countryInfoJSON',
-        params: {
-          username: appSettings.geoUsername,
-        }
-      });
-    }
-  };
-  return self;
-}]);
+      addNeighbors: function(country){
+        var http =  $http({
+          method: 'GET',
+          url: appSettings.geoApi + 'neighboursJSON',
+          params: {
+            username: appSettings.geoUsername,
+            geonameId: country.geonameId
+          }
+        }).success(function(result){
+          country.neighbors = result.geonames;
+        });
+        return country;
+      },
+
+      allCountries: function(){
+        var http = $http({
+          method: 'GET',
+          url: appSettings.geoApi + 'countryInfoJSON',
+          params: {
+            username: appSettings.geoUsername
+          }
+        });
+        return http.then(function (response) {
+          console.log(response);
+          return response.data.geonames;
+        });
+      }
+    };
+    return self;
+  }]);
+}());
