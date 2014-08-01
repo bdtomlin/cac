@@ -1,18 +1,16 @@
 (function() {
   "use strict";
 
-  angular.module('cacApp.alerts', []).controller('AlertsCtrl', ['$scope', '$timeout', function($scope, $timeout){
-    $scope.alerts = [];
+  angular.module('cacApp.alerts').
+  controller('AlertsCtrl', ['$scope', 'AlertsSvc', function($scope, AlertsSvc) {
+    $scope.alerts = AlertsSvc.alerts;
 
     $scope.$on('alert', function(event, alert){
-      var index = $scope.alerts.push(alert) - 1;
-      $timeout(function(){
-        $scope.dismissAlert(index);
-      }, 5000);
+      AlertsSvc.addAlert(alert);
     });
 
-    $scope.dismissAlert = function(index){
-      $scope.alerts.splice(index, 1);
+    $scope.dismissAlert = function(alert){
+      AlertsSvc.dismissAlert(alert);
     };
 
   }]);

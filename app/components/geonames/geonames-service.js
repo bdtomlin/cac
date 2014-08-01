@@ -1,14 +1,20 @@
 (function() {
   "use strict";
 
-  angular.module('cacApp.components.geonames', []).factory('GeonamesSvc', ['$http', 'appSettings', function($http, appSettings){
+  angular.module('cacApp.components.geonames', [])
+  .constant('geonamesSettings', {
+    geoApi: 'http://api.geonames.org/',
+    geoUsername: 'bryantomlin'
+  })
+
+  .factory('GeonamesSvc', ['$http', 'geonamesSettings', function($http, geonamesSettings){
     var self = {
       getCountry: function(countryCode){
         var http = $http({
           method: 'GET',
-          url: appSettings.geoApi + 'countryInfoJSON',
+          url: geonamesSettings.geoApi + 'countryInfoJSON',
           params: {
-            username: appSettings.geoUsername,
+            username: geonamesSettings.geoUsername,
             country: countryCode
           }
         });
@@ -25,9 +31,9 @@
       addCapitalPopulation: function(country){
         var http =  $http({
           method: 'GET',
-          url: appSettings.geoApi + 'searchJSON',
+          url: geonamesSettings.geoApi + 'searchJSON',
           params: {
-            username: appSettings.geoUsername,
+            username: geonamesSettings.geoUsername,
             country: country.countryCode,
             featureCode: 'PPLC',
             name: country.capital
@@ -41,9 +47,9 @@
       addNeighbors: function(country){
         var http =  $http({
           method: 'GET',
-          url: appSettings.geoApi + 'neighboursJSON',
+          url: geonamesSettings.geoApi + 'neighboursJSON',
           params: {
-            username: appSettings.geoUsername,
+            username: geonamesSettings.geoUsername,
             geonameId: country.geonameId
           }
         }).success(function(result){
@@ -55,9 +61,9 @@
       allCountries: function(){
         var http = $http({
           method: 'GET',
-          url: appSettings.geoApi + 'countryInfoJSON',
+          url: geonamesSettings.geoApi + 'countryInfoJSON',
           params: {
-            username: appSettings.geoUsername
+            username: geonamesSettings.geoUsername
           }
         });
         return http.then(function (response) {

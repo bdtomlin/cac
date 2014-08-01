@@ -12,11 +12,6 @@
     'cacApp.nav'
     ])
 
-    .constant('appSettings', {
-      geoApi: 'http://api.geonames.org/',
-      geoUsername: 'bryantomlin'
-    })
-
     .run(['$rootScope', function($rootScope){
       $rootScope.$on('$routeChangeStart', function(){
         $rootScope.isLoading = true;
