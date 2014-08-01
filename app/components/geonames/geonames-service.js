@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  angular.module('cacApp').factory('GeonamesSvc', ['$http', 'appSettings', function($http, appSettings){
+  angular.module('cacApp.components.geonames', []).factory('GeonamesSvc', ['$http', 'appSettings', function($http, appSettings){
     var self = {
       getCountry: function(countryCode){
         var http = $http({
@@ -61,7 +61,6 @@
           }
         });
         return http.then(function (response) {
-          console.log(response);
           return response.data.geonames;
         });
       }

@@ -1,7 +1,17 @@
 (function() {
   "use strict";
 
-  angular.module('cacApp', ['ngRoute', 'ngAnimate'])
+  angular.module('cacApp', [
+    'ngRoute',
+    'ngAnimate',
+    'cacApp.alerts',
+    'cacApp.components.geonames',
+    'cacApp.country',
+    'cacApp.countryList',
+    'cacApp.home',
+    'cacApp.nav'
+    ])
+
     .constant('appSettings', {
       geoApi: 'http://api.geonames.org/',
       geoUsername: 'bryantomlin'

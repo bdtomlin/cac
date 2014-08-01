@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  angular.module('cacApp').config(['$routeProvider', function($routeProvider){
+  angular.module('cacApp.country', []).config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/country/:country', {
       templateUrl: 'country/country.html',
       controller: 'CountryCtrl',

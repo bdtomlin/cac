@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  angular.module('cacApp').factory('CountrySvc', ['$q', 'GeonamesSvc', function($q, GeonamesSvc){
+  angular.module('cacApp.countryList').factory('CountryListSvc', ['$q', 'GeonamesSvc', function($q, GeonamesSvc){
     var self = {
       all: function(){
         if(self.cache){
@@ -12,10 +12,6 @@
           self.cache = GeonamesSvc.allCountries();
           return self.cache;
         }
-      },
-
-      find: function(countryCode){
-        return GeonamesSvc.getCountry(countryCode);
       }
     };
 

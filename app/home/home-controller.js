@@ -1,6 +1,6 @@
 (function() {
   "use strict";
 
-  angular.module('cacApp').controller('HomeCtrl', ['$scope', function($scope){
+  angular.module('cacApp.home').controller('HomeCtrl', ['$scope', function($scope){
   }]);
 }());

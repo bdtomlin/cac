@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  angular.module('cacApp').controller('AlertsCtrl', ['$scope', '$timeout', function($scope, $timeout){
+  angular.module('cacApp.alerts', []).controller('AlertsCtrl', ['$scope', '$timeout', function($scope, $timeout){
     $scope.alerts = [];
 
     $scope.$on('alert', function(event, alert){
