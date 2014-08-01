@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <title>Countries and Capitals</title>
   <!-- build:css ./css/cac-combined.css -->
-  <link rel="stylesheet" href="./app.css">
-  <link rel="stylesheet" href="./nav/nav.css">
-  <link rel="stylesheet" href="./alerts/alerts.css">
-  <link rel="stylesheet" href="./home/home.css">
-  <link rel="stylesheet" href="./country/country.css">
-  <link rel="stylesheet" href="./country-list/country-list.css">
+  <link rel="stylesheet" href="./cac-app/app.css">
+  <link rel="stylesheet" href="./cac-app/nav/nav.css">
+  <link rel="stylesheet" href="./cac-app/alerts/alerts.css">
+  <link rel="stylesheet" href="./cac-app/home/home.css">
+  <link rel="stylesheet" href="./cac-app/country/country.css">
+  <link rel="stylesheet" href="./cac-app/country-list/country-list.css">
   <!-- endbuild  -->
 </head>
 <body>
   <header>
     <h1>Countries &amp; Capitals</h1>
   </header>
-  <ng-include src="'./alerts/alerts.html'"></ng-include>
+  <ng-include src="'./cac-app/alerts/alerts.html'"></ng-include>
   <div id="is-loading" ng-class="{showload: isLoading}"><img src="./images/loading.gif" alt="loading"></div>
   <div id="main-view" ng-view>
   </div>
@@ -25,20 +25,20 @@
   <script src="./bower_components/angular/angular.js"></script>
   <script src="./bower_components/angular-route/angular-route.js"></script>
   <script src="./bower_components/angular-animate/angular-animate.js"></script>
-  <script src="./app.js"></script>
-  <script src="./nav/nav-controller.js"></script>
-  <script src="./alerts/alerts.js"></script>
-  <script src="./alerts/alerts-service.js"></script>
-  <script src="./alerts/alerts-controller.js"></script>
-  <script src="./home/home.js"></script>
-  <script src="./home/home-controller.js"></script>
-  <script src="./country/country.js"></script>
-  <script src="./country/country-service.js"></script>
-  <script src="./country/country-controller.js"></script>
-  <script src="./country-list/country-list.js"></script>
-  <script src="./country-list/country-list-service.js"></script>
-  <script src="./country-list/country-list-controller.js"></script>
-  <script src="./components/geonames/geonames-service.js"></script>
+  <script src="./cac-app/app.js"></script>
+  <script src="./cac-app/nav/nav-controller.js"></script>
+  <script src="./cac-app/alerts/alerts.js"></script>
+  <script src="./cac-app/alerts/alerts-service.js"></script>
+  <script src="./cac-app/alerts/alerts-controller.js"></script>
+  <script src="./cac-app/home/home.js"></script>
+  <script src="./cac-app/home/home-controller.js"></script>
+  <script src="./cac-app/country/country.js"></script>
+  <script src="./cac-app/country/country-service.js"></script>
+  <script src="./cac-app/country/country-controller.js"></script>
+  <script src="./cac-app/country-list/country-list.js"></script>
+  <script src="./cac-app/country-list/country-list-service.js"></script>
+  <script src="./cac-app/country-list/country-list-controller.js"></script>
+  <script src="./cac-app/components/geonames/geonames-service.js"></script>
   <!-- endbuild  -->
 </body>
 </html>

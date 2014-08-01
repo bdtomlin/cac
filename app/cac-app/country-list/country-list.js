@@ -4,7 +4,7 @@
   angular.module('cacApp.countryList', [])
   .config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/country-list', {
-      templateUrl: 'country-list/country-list.html',
+      templateUrl: 'cac-app/country-list/country-list.html',
       controller: 'CountryListCtrl',
       resolve: {
         countryList: ['CountryListSvc', function(CountrySvc){
