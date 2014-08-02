@@ -16,6 +16,8 @@ for(var i=0, l=scripts.length; i<l; i++){
   src = src.replace(/src=\.\//g, './app/');
   fileList.push(src);
 }
+fileList.push('./app/bower_components/angular-mocks/angular-mocks.js');
+fileList.push('./app/cac-app/**/*_spec.js');
 
 module.exports = function(config) {
   config.set({

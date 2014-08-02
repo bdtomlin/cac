@@ -23,6 +23,7 @@
     "angular-animate": "~1.2.21"
   },
   "devDependencies": {
-    "gulp": "~3.8.6"
+    "gulp": "~3.8.6",
+    "angular-mocks": "~1.2.21"
   }
 }

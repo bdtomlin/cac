@@ -5,7 +5,6 @@
     var self = {
       alerts: [],
       addAlert: function(alert){
-        alert.ident = new Date().getTime.toString();
         alert.timeout = $timeout(function(){
           self.dismissAlert(alert);
         }, 5000);

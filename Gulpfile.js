@@ -3,8 +3,7 @@ var gulp = require('gulp'),
     minifyCss = require('gulp-minify-css'),
     rev = require('gulp-rev'),
     usemin = require('gulp-usemin'),
-    uglify = require('gulp-uglify'),
-    karma = require('gulp-karma');
+    uglify = require('gulp-uglify');
 
 gulp.task('default', function(){
   connect.server({
