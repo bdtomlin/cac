@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     minifyCss = require('gulp-minify-css'),
     rev = require('gulp-rev'),
     usemin = require('gulp-usemin'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    karma = require('gulp-karma');
 
 gulp.task('default', function(){
   connect.server({
@@ -30,6 +31,5 @@ gulp.task('usemin', function(){
   }))
   .pipe(gulp.dest('build/'));
 });
-
 
 gulp.task('build', ['copy-html-files', 'copy-images', 'usemin']);

@@ -1,6 +1,22 @@
 // Karma configuration
 // Generated on Fri Aug 01 2014 14:14:32 GMT-0500 (CDT)
 
+// crazy hack to make Karma read javascripts from home file
+// I should make a preprocessor.
+// This is idea mostly inspired by another preprocessor
+// "karma-preprocessor-pullscripts": "^0.2.0"
+// but it was a lot of code plus dependencies and didn't work :)
+var fs       = require('fs'),
+    fileList = [],
+    content  = fs.readFileSync('./app/index.html', 'utf8'),
+    scripts  = content.match(/src=['"](.*\.js)['"]/gm);
+
+for(var i=0, l=scripts.length; i<l; i++){
+  var src = scripts[i].replace(/"/g, '');
+  src = src.replace(/src=\.\//g, './app/');
+  fileList.push(src);
+}
+
 module.exports = function(config) {
   config.set({
 
@@ -14,18 +30,7 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: [
-      './app/bower_components/angular/angular.js',
-      './app/bower_components/angular-animate/angular-animate.js',
-      './app/bower_components/angular-mocks/angular-mocks.js',
-      './app/cac-app/app.js',
-      './app/cac-app/country/country.js',
-      './app/cac-app/country-list/country-list.js',
-      './app/cac-app/alerts/alerts.js',
-      './app/cac-app/home/home.js',
-      './app/cac-app/**/*.js'
-    ],
-
+    files: fileList,
 
     // list of files to exclude
     exclude: [
