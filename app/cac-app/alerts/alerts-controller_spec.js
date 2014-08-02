@@ -1,5 +1,5 @@
 describe("cacApp.alerts", function () {
-  var mockedAlertsSvc;
+  var AlertsSvcMock;
 
   beforeEach(module('cacApp.alerts'));
   beforeEach(module(function($provide) {
