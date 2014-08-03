@@ -2,7 +2,7 @@
   "use strict";
 
   angular.module('cacApp.country.service', [])
-    .factory('CountrySvc', ['$q', 'GeonamesSvc', function($q, GeonamesSvc){
+    .factory('CountrySvc', ['GeonamesSvc', function(GeonamesSvc){
     return {
       getCountry: function(countryCode){
         return GeonamesSvc.getCountry(countryCode).then(function(country){
