@@ -21,41 +21,35 @@
 
         return http.then(function(response){
           return response.data.geonames[0];
-        }).then(function(country){
-          return self.addNeighbors(country);
-        }).then(function(country){
-          return self.addCapitalPopulation(country);
         });
       },
 
-      addCapitalPopulation: function(country){
-        var http =  $http({
+      capitalPopulation: function(countryCode, countryCapital){
+        return $http({
           method: 'GET',
           url: geonamesSettings.geoApi + 'searchJSON',
           params: {
             username: geonamesSettings.geoUsername,
-            country: country.countryCode,
+            country: countryCode,
             featureCode: 'PPLC',
-            name: country.capital
+            name: countryCapital
           }
-        }).success(function(result){
-          country.capitalPopulation = result.geonames[0].population;
+        }).then(function(result){
+          return result.data.geonames[0].population;
         });
-        return country;
       },
 
-      addNeighbors: function(country){
-        var http =  $http({
+      neighbors: function(geonameId){
+        return $http({
           method: 'GET',
           url: geonamesSettings.geoApi + 'neighboursJSON',
           params: {
             username: geonamesSettings.geoUsername,
-            geonameId: country.geonameId
+            geonameId: geonameId
           }
-        }).success(function(result){
-          country.neighbors = result.geonames;
+        }).then(function(response){
+          return response.data.geonames;
         });
-        return country;
       },
 
       allCountries: function(){

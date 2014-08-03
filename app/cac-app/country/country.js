@@ -7,7 +7,11 @@
       controller: 'CountryCtrl',
       resolve: {
         country: ['CountrySvc', '$route', function(CountrySvc, $route){
-          return CountrySvc.find($route.current.params.country);
+          return CountrySvc.getCountry($route.current.params.country).then(function(country){
+            country.getCapitalPopulation();
+            country.getNeighbors();
+            return country;
+          });
         }]
       }
     });
