@@ -29,7 +29,8 @@ describe("cacApp.alerts", function () {
 
     it("listens for alerts and adds them to alerts array", function () {
       scope.$broadcast('alert', alert);
-      expect(AlertsSvcMock.addAlert.argsForCall[0][0]).toBe(alert);
+      // console.log(AlertsSvcMock.addAlert.argsFor(0));
+      expect(AlertsSvcMock.addAlert.calls.argsFor(0)[0]).toBe(alert);
       expect(AlertsSvcMock.addAlert).toHaveBeenCalled();
     });
 
@@ -37,7 +38,7 @@ describe("cacApp.alerts", function () {
       var alert = {type: 'error', message: 'some message'};
       scope.$broadcast('alert', alert);
       scope.dismissAlert(alert);
-      expect(AlertsSvcMock.dismissAlert.argsForCall[0][0]).toBe(alert);
+      expect(AlertsSvcMock.dismissAlert.calls.argsFor(0)[0]).toBe(alert);
       expect(AlertsSvcMock.dismissAlert).toHaveBeenCalled();
     });
   });
