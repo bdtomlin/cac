@@ -1,7 +1,8 @@
 (function() {
   "use strict";
 
-  angular.module('cacApp.countryList').factory('CountryListSvc', ['$q', 'GeonamesSvc', function($q, GeonamesSvc){
+  angular.module('cacApp.countryList.service', [])
+  .factory('CountryListSvc', ['$q', 'GeonamesSvc', function($q, GeonamesSvc){
     var self = {
       all: function(){
         if(self.cache){

@@ -1,16 +1,9 @@
 (function() {
   "use strict";
 
-  angular.module('cacApp.countryList', [])
-  .config(['$routeProvider', function($routeProvider){
-    $routeProvider.when('/country-list', {
-      templateUrl: 'cac-app/country-list/country-list.html',
-      controller: 'CountryListCtrl',
-      resolve: {
-        countryList: ['CountryListSvc', function(CountrySvc){
-          return CountrySvc.all();
-        }]
-      }
-    });
-  }]);
+  angular.module('cacApp.countryList', [
+    'cacApp.countryList.controller',
+    'cacApp.countryList.routes',
+    'cacApp.countryList.service'
+  ]);
 }());
