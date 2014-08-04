@@ -2,9 +2,11 @@ describe("cacApp.coutnry.routes", function () {
   beforeEach(module('cacApp.country.routes'));
   beforeEach(module(function($provide){
     $provide.value('CountrySvc', {
+      // verify that getCountry gets called (spyOn)
       getCountry: function(){
         return new Promise(function(){
           return {
+            // verify that these get called...
             getCapitalPopulation: function(){},
             getNeighbors: function(){}
           };
@@ -23,6 +25,8 @@ describe("cacApp.coutnry.routes", function () {
       });
       expect($route.current.controller).toBe("CountryCtrl");
       expect($route.current.templateUrl).toBe("cac-app/country/country.html");
+      $httpBackend.flush();
+      // $httpBackend.verifyNoOutStandingRequests();
     }));
   });
 });

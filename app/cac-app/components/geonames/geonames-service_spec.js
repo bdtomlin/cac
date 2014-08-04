@@ -14,6 +14,7 @@ describe("GeonamesSvc", function () {
   }));
 
   it('queries the geonames api for capitalPopulation', inject(function(GeonamesSvc, $rootScope, $httpBackend){
+    // expect accepts regex
     $httpBackend.expect('GET', 'http://api.geonames.org/searchJSON?country=AD&featureCode=PPLC&name=Andorra+la+Vella&username=bryantomlin')
                 .respond({"geonames": [{"population": 100}]});
     GeonamesSvc.capitalPopulation('AD', 'Andorra la Vella').then(function(pop){
@@ -21,6 +22,8 @@ describe("GeonamesSvc", function () {
     });
     $rootScope.$digest();
     $httpBackend.flush();
+    // make sure expectations were called
+    $httpBackend.verifyNoOutstandingExpectation();
     $httpBackend.verifyNoOutstandingRequest();
   }));
 
@@ -32,6 +35,7 @@ describe("GeonamesSvc", function () {
     });
     $rootScope.$digest();
     $httpBackend.flush();
+    $httpBackend.verifyNoOutstandingExpectation();
     $httpBackend.verifyNoOutstandingRequest();
   }));
 
@@ -43,6 +47,7 @@ describe("GeonamesSvc", function () {
     });
     $rootScope.$digest();
     $httpBackend.flush();
+    $httpBackend.verifyNoOutstandingExpectation();
     $httpBackend.verifyNoOutstandingRequest();
   }));
 });
