@@ -7,8 +7,8 @@
         templateUrl: 'cac-app/country-list/country-list.html',
         controller: 'CountryListCtrl',
         resolve: {
-          countryList: ['CountryListSvc', function(CountrySvc){
-            return CountrySvc.all();
+          countryList: ['CountryListSvc', function(CountryListSvc){
+            return CountryListSvc.all();
           }]
         }
       });

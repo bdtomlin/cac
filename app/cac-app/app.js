@@ -2,7 +2,6 @@
   "use strict";
 
   angular.module('cacApp', [
-    'ngRoute',
     'ngAnimate',
     'cacApp.alerts',
     'cacApp.components.geonames',
@@ -23,11 +22,5 @@
         $rootScope.isLoading = false;
         $rootScope.$broadcast('alert', {type: 'error', message: 'There was an error loading the page'});
       });
-    }])
-
-    // put this in geonames because it is specific to that
-    .config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
-      $httpProvider.defaults.useXDomain = true;
-      delete $httpProvider.defaults.headers.common['X-Requested-With'];
     }]);
 }());

@@ -29,7 +29,6 @@ describe("cacApp.alerts", function () {
 
     it("listens for alerts and adds them to alerts array", function () {
       scope.$broadcast('alert', alert);
-      // console.log(AlertsSvcMock.addAlert.argsFor(0));
       expect(AlertsSvcMock.addAlert.calls.argsFor(0)[0]).toBe(alert);
       expect(AlertsSvcMock.addAlert).toHaveBeenCalled();
     });

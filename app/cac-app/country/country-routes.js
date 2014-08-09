@@ -9,8 +9,10 @@
       resolve: {
         country: ['CountrySvc', '$route', function(CountrySvc, $route){
           return CountrySvc.getCountry($route.current.params.country).then(function(country){
-            country.getCapitalPopulation();
-            country.getNeighbors();
+            CountrySvc.addCapitalPopulationTo(country);
+            return country;
+          }).then(function(country){
+            CountrySvc.addNeighborsTo(country);
             return country;
           });
         }]

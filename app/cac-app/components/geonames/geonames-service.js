@@ -1,11 +1,15 @@
 (function() {
   "use strict";
 
-  angular.module('cacApp.components.geonames', [])
+  angular.module('cacApp.components.geonames', ['ngRoute'])
   .constant('geonamesSettings', {
     geoApi: 'http://api.geonames.org/',
     geoUsername: 'bryantomlin'
   })
+  .config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  }])
 
   .factory('GeonamesSvc', ['$http', 'geonamesSettings', function($http, geonamesSettings){
     var self = {
@@ -34,8 +38,8 @@
             featureCode: 'PPLC',
             name: countryCapital
           }
-        }).then(function(result){
-          return result.data.geonames[0].population;
+        }).then(function(response){
+          return response.data.geonames[0].population;
         });
       },
 
