@@ -18,30 +18,30 @@ describe("GeonamesSvc", function () {
     makeRequests($rootScope, $httpBackend);
   }));
 
-  // it('queries the geonames api for capitalPopulation', inject(function(GeonamesSvc, $rootScope, $httpBackend){
-  //   $httpBackend.expect('GET', /searchJSON\?country=AD&featureCode=PPLC&name=Andorra\+la\+Vella/)
-  //               .respond({"geonames": [{"population": 100}]});
-  //   GeonamesSvc.capitalPopulation('AD', 'Andorra la Vella').then(function(pop){
-  //     expect(pop).toEqual(100);
-  //   });
-  //   makeRequests($rootScope, $httpBackend);
-  // }));
-  //
-  // it('queries the geonames api for neighbors', inject(function(GeonamesSvc, $rootScope, $httpBackend){
-  //   $httpBackend.expect('GET', 'http://api.geonames.org/neighboursJSON?geonameId=3041565&username=bryantomlin')
-  //               .respond({"geonames": [countryJson]});
-  //   GeonamesSvc.neighbors(3041565).then(function(response){
-  //     expect(response).toEqual([countryJson]);
-  //   });
-  //   makeRequests($rootScope, $httpBackend);
-  // }));
-  //
-  // it('queries the geonames api for allCountries', inject(function(GeonamesSvc, $rootScope, $httpBackend){
-  //   $httpBackend.expect('GET', 'http://api.geonames.org/countryInfoJSON?username=bryantomlin')
-  //               .respond(countryJson);
-  //   GeonamesSvc.allCountries().then(function(data){
-  //     expect(data).toEqual(JSON.parse(countryJson).geonames);
-  //   });
-  //   makeRequests($rootScope, $httpBackend);
-  // }));
+  it('queries the geonames api for capitalPopulation', inject(function(GeonamesSvc, $rootScope, $httpBackend){
+    $httpBackend.expect('GET', /searchJSON\?country=AD&featureCode=PPLC&name=Andorra\+la\+Vella/)
+                .respond({"geonames": [{"population": 100}]});
+    GeonamesSvc.capitalPopulation('AD', 'Andorra la Vella').then(function(population){
+      expect(population).toEqual(100);
+    });
+    makeRequests($rootScope, $httpBackend);
+  }));
+
+  it('queries the geonames api for neighbors', inject(function(GeonamesSvc, $rootScope, $httpBackend){
+    $httpBackend.expect('GET', 'http://api.geonames.org/neighboursJSON?geonameId=3041565&username=bryantomlin')
+                .respond({"geonames": [countryJson]});
+    GeonamesSvc.neighbors(3041565).then(function(response){
+      expect(response).toEqual([countryJson]);
+    });
+    makeRequests($rootScope, $httpBackend);
+  }));
+
+  it('queries the geonames api for allCountries', inject(function(GeonamesSvc, $rootScope, $httpBackend){
+    $httpBackend.expect('GET', 'http://api.geonames.org/countryInfoJSON?username=bryantomlin')
+                .respond(countryJson);
+    GeonamesSvc.allCountries().then(function(data){
+      expect(data).toEqual(JSON.parse(countryJson).geonames);
+    });
+    makeRequests($rootScope, $httpBackend);
+  }));
 });

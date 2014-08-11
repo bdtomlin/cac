@@ -10,8 +10,6 @@
         country: ['CountrySvc', '$route', function(CountrySvc, $route){
           return CountrySvc.getCountry($route.current.params.country).then(function(country){
             CountrySvc.addCapitalPopulationTo(country);
-            return country;
-          }).then(function(country){
             CountrySvc.addNeighborsTo(country);
             return country;
           });
@@ -20,3 +18,14 @@
     });
   }]);
 }());
+
+ // return CountrySvc.getCountry($route.current.params.country)
+ //  .then(function(country){
+ //  return $q.all([
+ //  CountrySvc.addCapitalPopulationTo(country),
+ //  CountrySvc.addNeighborsTo(country)
+ //  ])
+ //  .then(function(){
+ //  return country;
+ //  })
+ //  })
